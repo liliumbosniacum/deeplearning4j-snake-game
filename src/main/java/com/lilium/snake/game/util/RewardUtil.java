@@ -54,7 +54,7 @@ public final class RewardUtil {
             return 100.0;
         }
 
-        if (PositionUtil.isPositionCloserToFoodPosition(nextPosition, foodPosition, nextDirection)) {
+        if (PositionUtil.isPositionCloserToFoodPosition(snakePosition[0], nextPosition, foodPosition, nextDirection)) {
             return 1.0;
         }
 

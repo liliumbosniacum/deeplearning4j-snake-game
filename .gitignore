@@ -3,3 +3,8 @@
 /build/
 /build/classes/java/main/
 /build/classes/java/test/
+
+.classpath
+.project
+.settings/
+bin/
