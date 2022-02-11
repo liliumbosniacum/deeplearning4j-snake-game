@@ -52,8 +52,6 @@ public class Environment implements MDP<GameState, Integer, DiscreteSpace> {
         // If you want to see what is the snake doing while training increase this value
         NetworkUtil.waitMs(0);
 
-        // Get reward
-
         // Get current state
         final GameState observation = game.buildStateObservation();
 
