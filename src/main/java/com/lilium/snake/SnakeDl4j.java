@@ -63,8 +63,9 @@ public class SnakeDl4j extends JFrame {
 
     private void evaluateNetwork(Game game, String randomNetworkName) {
         final MultiLayerNetwork multiLayerNetwork = NetworkUtil.loadNetwork(randomNetworkName);
-        int highscore = 0;
-        for (int i = 0; i < 1000; i++) {
+        int highscore = 0, average = 0;
+        int iterations = 1000;
+        for (int i = 0; i < iterations; i++) {
             int score = 0;
             while (game.isOngoing()) {
                 try {
@@ -90,12 +91,14 @@ public class SnakeDl4j extends JFrame {
             if (score > highscore) {
                 highscore = score;
             }
-
+            average += score;
+            
             // Reset the game
             game.initializeGame();
         }
         LOG.info("Finished evaluation of the network, highscore was '{}'", highscore);
-    }
+        LOG.info("Average: '{}'", average / iterations);
+}
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {

@@ -56,26 +56,16 @@ public final class PositionUtil {
      * @param nextDirection .
      * @return .
      */
-    public static boolean isPositionCloserToFoodPosition(final Position nextPosition,
+    public static boolean isPositionCloserToFoodPosition(final Position snakePosition,
+    													 final Position nextPosition,
                                                          final Position foodPosition,
                                                          final Direction nextDirection) {
-        if (nextDirection == Direction.UP) {
-            return foodPosition.getY() < nextPosition.getY();
-        }
-
-        if (nextDirection == Direction.RIGHT) {
-            return foodPosition.getX() > nextPosition.getX();
-        }
-
-        if (nextDirection == Direction.DOWN) {
-            return foodPosition.getY() > nextPosition.getY();
-        }
-
-        if (nextDirection == Direction.LEFT) {
-            return foodPosition.getX() < nextPosition.getX();
-        }
-
-        return false;
+    	
+        if(nextDirection == Direction.UP || nextDirection == Direction.DOWN) {
+        	return Math.abs(snakePosition.getY() - foodPosition.getY()) > Math.abs(nextPosition.getY() - foodPosition.getY());
+        }else {
+        	return Math.abs(snakePosition.getX() - foodPosition.getX()) > Math.abs(nextPosition.getX() - foodPosition.getX()); 
+        } 
     }
 
     private static Position buildPosition(final int x, final int y) {

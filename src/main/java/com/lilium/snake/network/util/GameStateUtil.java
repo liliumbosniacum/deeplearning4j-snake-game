@@ -36,39 +36,13 @@ public final class GameStateUtil {
             return -1.0;
         }
 
-        if (directionToCheck == Direction.UP) {
-            if (head.getY() > foodPosition.getY()) {
-                return 1.0;
-            }
-
-            return 0.0;
+        if (directionToCheck == Direction.UP || directionToCheck == Direction.DOWN) {
+            if(Math.abs(head.getY() - foodPosition.getY()) > Math.abs(nextPosition.getY() - foodPosition.getY()))		return 1.0;
+            else		return 0;
+        }else {
+        	if(Math.abs(head.getX() - foodPosition.getX()) > Math.abs(nextPosition.getX() - foodPosition.getX()))		return 1.0;
+        	else		return 0;
         }
-
-        if (directionToCheck == Direction.RIGHT) {
-            if (head.getX() < foodPosition.getX()) {
-                return 1.0;
-            }
-
-            return 0.0;
-        }
-
-        if (directionToCheck == Direction.DOWN) {
-            if (head.getY() < foodPosition.getY()) {
-                return 1.0;
-            }
-
-            return 0.0;
-        }
-
-        if (directionToCheck == Direction.LEFT) {
-            if (head.getX() < foodPosition.getX()) {
-                return 1.0;
-            }
-
-            return 0.0;
-        }
-
-        return 0.0;
     }
 
     /**
